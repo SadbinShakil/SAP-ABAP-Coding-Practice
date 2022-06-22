@@ -1,0 +1,830 @@
+*&---------------------------------------------------------------------*
+*& Report ZSAKIL_SARKER_PRACTICE
+*&---------------------------------------------------------------------*
+*&
+*&---------------------------------------------------------------------*
+REPORT zsakil_sarker_practice.
+
+
+
+
+**TRY.
+*CALL METHOD SUPER->MONTHWISETOTALQU_GET_ENTITYSET
+*  EXPORTING
+*    IV_ENTITY_NAME           =
+*    IV_ENTITY_SET_NAME       =
+*    IV_SOURCE_NAME           =
+*    IT_FILTER_SELECT_OPTIONS =
+*    IS_PAGING                =
+*    IT_KEY_TAB               =
+*    IT_NAVIGATION_PATH       =
+*    IT_ORDER                 =
+*    IV_FILTER_STRING         =
+*    IV_SEARCH_STRING         =
+**    io_tech_request_context  =
+**  IMPORTING
+**    et_entityset             =
+**    es_response_context      =
+*    .
+**  CATCH /iwbep/cx_mgw_busi_exception.
+**  CATCH /iwbep/cx_mgw_tech_exception.
+**ENDTRY.
+
+
+
+
+
+
+*DATA: x TYPE i VALUE 10,
+*      y TYPE i VALUE 20,
+*      z TYPE i,
+*      m TYPE i,
+*      n TYPE i.
+*
+*z = x + y.
+*m = x * y.
+*n = x MOD y.
+*
+*WRITE:/ 'Total sum of x and y is: ', z.
+*WRITE:/ 'Total multiplication of x and y is: ', m.
+*WRITE:/ 'Total Division of x and y is: ', n.
+*
+*IF x GT y.
+*  WRITE: 'X boro'.
+*ELSEIF x LT y.
+*  WRITE: 'Y boro'.
+*ELSE.
+*  WRITE: '2 tai shoman'.
+*
+*ENDIF.
+*
+*CLEAR: x.
+*DO 7 TIMES.
+*  WRITE:/ 'hello'.
+*ENDDO.
+*
+*DO 7 TIMES.
+*  WRITE:/ x.
+*  x = x + 2.
+*ENDDO.
+*
+*
+*"Leap year finding between 2000 to 2050"
+*
+*DATA: year1 TYPE i VALUE 2000,
+*      year2 TYPE i VALUE 2050.
+*WRITE:/.
+*WRITE: 'leap years are: '.
+*WHILE year1 LT year2 OR year1 EQ year2.
+*  IF ( year1 MOD 4 EQ 0 ) AND ( year1 MOD 100 NE 0 ) OR ( year1 MOD 400 EQ 0 ).
+*    WRITE:/ year1.
+*  ENDIF.
+*  year1 = year1 + 4.
+*
+*ENDWHILE.
+*
+*"Concat 2 string into 1".
+*
+*DATA: str1      TYPE string VALUE '2000',
+*      str2      TYPE string VALUE '2050',
+*      str_final TYPE string,
+*      length    TYPE i,
+*      c1(10),
+*      demo      TYPE string VALUE 'hello,hi',
+*      c2(10).
+*
+*CONCATENATE str1 str2 INTO str_final.
+*
+*length = strlen( str_final ).
+*WRITE:/ 'After concatenation , 2 string looks like..', str_final, 'and the length is= ', length.
+*
+*SPLIT demo AT ',' INTO c1  c2.
+*
+*WRITE:/ c1, c2.
+*
+*WRITE:/ 'Printing 0 to 7'.
+*DATA: num TYPE i VALUE 0.
+*
+*DO 7 TIMES.
+*  WRITE:/ num.
+*  num = num + 1.
+*ENDDO.
+*
+*WRITE:/ 'Printing 0 to 7 except 5'.
+*CLEAR: num.
+*DO 7 TIMES.
+*  IF num EQ 5.
+*    CONTINUE.
+*  ENDIF.
+*  WRITE:/ num.
+*  num = num + 1.
+*ENDDO.
+*
+*WRITE:/ 'Printing 0 to 4'.
+*CLEAR: num.
+*DO 7 TIMES.
+*  IF num EQ 5.
+*    EXIT.
+*  ENDIF.
+*  WRITE:/ num.
+*  num = num + 1.
+*ENDDO.
+*
+*WRITE:/ 'checking in between a range'.
+*CLEAR: num.
+*DO 7 TIMES.
+*  CHECK num BETWEEN 2 AND 6.
+*  WRITE:/ num.
+*  num = num + 1.
+*ENDDO.
+*
+*"Triangle validation with angle and sides".
+*DATA: angle1    TYPE i VALUE 90,
+*      angle2    TYPE i VALUE 30,
+*      angle3    TYPE i VALUE 60,
+*      side1     TYPE i VALUE 10,
+*      side2     TYPE i VALUE 20,
+*      side3     TYPE i VALUE 30,
+*      summation TYPE i VALUE 0.
+*
+*summation = angle1 + angle2 + angle3.
+*
+*IF summation EQ 180.
+*  WRITE:/'Triangle Valid by these angles'.
+*
+*ENDIF.
+*
+*IF ( side1 + side2 GT side3 ) AND ( side2 + side3 GT side1 ) AND ( side1 + side3 GT side2 ).
+*  WRITE:/ 'Valid Triangle using sides'.
+*ENDIF.
+*
+*" * printing with pattern".
+*
+*DATA: check TYPE i VALUE 1.
+*DO 5 TIMES.
+*  WRITE:/'*'.
+*ENDDO.
+*
+*
+*DATA: a    TYPE i VALUE 10,
+*      b    TYPE i VALUE 20,
+*      c    TYPE i,
+*      date TYPE d,
+*      time TYPE t.
+*
+*date = sy-datum.
+*time = sy-uzeit.
+*
+*WRITE:/ a,b.
+*MOVE b TO c.
+*MOVE a TO b.
+*MOVE c TO a.
+*WRITE:/ a,b.
+*SKIP.
+*WRITE: / 'Date:', date DD/MM/YY.
+*SKIP .
+*WRITE /(15) time USING EDIT MASK 'Time: __:__:__'.
+*
+*
+*DATA: aa TYPE p VALUE 13 DECIMALS 2,
+*      bb TYPE p VALUE 3 DECIMALS 2,
+*      cc TYPE p DECIMALS 2.
+*cc = aa / bb.
+*WRITE:/ 'Division result is: ', cc.
+*
+*
+*
+*"Case statement".
+*DATA: check2 TYPE c VALUE 'x'.
+*CASE check2.
+*  WHEN 'x'.
+*    WRITE: 'x'.
+*  WHEN OTHERS.
+*    WRITE: 'Nothing'.
+*    ENDCASE.
+*
+
+
+*Data: input_data type i value 10,
+*      temp type i VALUE 0,
+*      test_string type string value 'Hello there'.
+*
+*do 10 times.
+*  temp = temp + 1.
+*  if temp mod 2 eq 0.
+*  write:/ 'Even', temp.
+*  else.
+*    write:/ 'ODD',temp.
+*
+*    ENDIF.
+*  ENDDO.
+*skip.
+*  Write:/ test_string.
+
+*  PARAMETERS: test TYPE ZFIRSTDATATYPE.
+*  write:/ test.
+*
+*  DATA: employee type ZDEMOSTRUCTURE,
+*        employee2 type ZDEMOSTRUCTURE.
+*
+*  employee-ID = '01'.
+*  employee-Name = 'Sakil'.
+*  employee-Email = 'Sakil@gmail.com'.
+*
+*  write:/ employee-ID.
+
+
+*MESSAGE text-001 TYPE 'I'.
+
+*TYPES: BEGIN OF T_Prod,
+*  SL_no TYPE i,
+*  item(10) TYPE c,
+*  Quantity TYPE i,
+*  UnitPrice TYPE p DECIMALS 2,
+*  discount TYPE p DECIMALS 2,
+*  UnitPrice_with_dis TYPE p DECIMALS 2,
+*  total_price TYPE p DECIMALS 2,
+*  END OF T_Prod.
+*
+*
+*DATA: wa TYPE T_Prod,
+*      it TYPE TABLE OF T_Prod.
+*
+*  wa-item = 'Apple'.
+*  wa-Quantity = '2'.
+*  wa-UnitPrice = '1000'.
+*  wa-discount = '100'.
+*  wa-UnitPrice_with_dis = '900'.
+*  wa-total_price = '900'.
+*
+*  INSERT wa INTO TABLE it.
+*
+*  LOOP at it into wa.
+*    WRITE:/ wa-item, wa-Quantity, wa-UnitPrice, wa-discount, wa-UnitPrice_with_dis, wa-total_price.
+*
+*    ENDLOOP.
+
+*TYPES: BEGIN OF T_Prod,
+*  SL_no TYPE i,
+*
+*  Quantity TYPE i,
+*  UnitPrice TYPE p DECIMALS 2,
+*  discount TYPE p DECIMALS 2,
+*  UnitPrice_with_dis TYPE p DECIMALS 2,
+*  END OF T_Prod.
+*
+*
+*DATA: wa TYPE T_Prod,
+*      it TYPE TABLE OF T_Prod,
+*      discount_amount TYPE p DECIMALS 2,
+*      discount_price TYPE p DECIMALS 2,
+*      total_price TYPE p DECIMALS 2.
+*
+*
+*  wa-SL_no = 1.
+*  wa-UnitPrice = 1000.
+*  wa-discount = 10.
+*
+*
+*
+*discount_amount = wa-discount * wa-UnitPrice / 100.
+*discount_price = wa-UnitPrice - discount_amount.
+*
+*
+*wa-total_price = discount_price.
+*
+*
+*
+*  INSERT wa INTO TABLE it.
+*
+*  LOOP at it into wa.
+*    WRITE:/ wa-SL_no, wa-UnitPrice, wa-discount, wa-total_price.
+*
+*    ENDLOOP.
+
+
+"-------------------Internal Table creation and value manipulation----------
+*TYPES: BEGIN OF car_table,
+*         model TYPE string,
+*         price TYPE p DECIMALS 2,
+*       END OF car_table.
+*
+*DATA: wa TYPE car_table,
+*      it TYPE TABLE OF car_table.
+*
+*wa-model = 'Audi 2022'.
+*wa-price = 10000000.
+*
+*APPEND wa TO it.
+*
+*CLEAR: wa.
+*
+*wa-model = 'Marcidese Benz'.
+*wa-price = 140000001.
+*
+*APPEND wa TO it.
+*CLEAR: wa.
+*
+*wa-model = 'Bugatti'.
+*wa-price = 100000000.
+*
+*APPEND wa TO it.
+*CLEAR: wa.
+*
+*wa-model = 'Ferari'.
+*wa-price = 12000003.
+*
+*APPEND wa TO it.
+*CLEAR: wa.
+*
+**INSERT car_table from TABLE it ACCEPTING DUPLICATE KEYS.
+*
+*WRITE:/'Car Model' COLOR 5,'------------' COLOR 5,'Car Price' COLOR 5.
+*
+*WRITE:/.
+*LOOP AT it INTO wa.
+*  WRITE:/ wa-model, wa-price.
+*ENDLOOP.
+*
+*
+*"-------------Deletion----------
+*LOOP AT it INTO wa.
+*  IF wa-price MOD 2 EQ 0.
+*    DELETE it.
+*  ENDIF.
+*ENDLOOP.
+*
+*
+*WRITE:/'Car Model' COLOR 4,'------------' COLOR 5,'Car Price' COLOR 4.
+*WRITE:/.
+*LOOP AT it INTO wa.
+*  WRITE:/ wa-model, wa-price.
+*ENDLOOP.
+*
+*"-----------Modify-----------
+*clear: wa.
+*wa-model = 'Ferari-2'. "after update, it will appear.
+*
+**modify it from wa transporting model where model = 'Ferari'.
+**modify it from wa.
+*
+*
+*WRITE:/'Car Model' COLOR 6,'------------' COLOR 5,'Car Price' COLOR 6.
+*WRITE:/.
+*LOOP AT it INTO wa.
+*  WRITE:/ wa-model, wa-price.
+*ENDLOOP.
+
+"---------------------Deep Structure(Globally)   Structure er moddhe table type ------------------------
+*DATA: Employee TYPE ZDEMO_STRUCT,  "Structure name
+*      it TYPE TABLE OF ZDEMO_STRUCT,
+*
+*      edu TYPE ZEDUCATION,    "table type er structure name
+*      it_edu TYPE TABLE OF ZEDUCATION.
+*
+*
+*Employee-id = '1'.
+*Employee-name = 'Nakib vai'.
+*Employee-salary = '45000'.
+*insert employee into table it.
+*
+*edu-ssc = '5.00'.
+*edu-hsc = '5.00'.
+*edu-uni = '4.00'.
+*insert edu into table it_edu.
+*
+*
+*
+*LOOP AT it INTO employee.
+*  WRITE:/ employee-id.
+*  skip.
+*ENDLOOP.
+
+"---------------------Nested Structure(Globally)   Structure er moddhe structure type ------------------------
+
+*DATA: Employee TYPE ZDEMO_STRUCT,  "Structure name
+*      it TYPE TABLE OF ZDEMO_STRUCT.
+*
+*
+*Employee-id = '1'.
+*Employee-name = 'Nakib vai'.
+*Employee-salary = '45000'.
+*
+*employee-education2-hsc = '5.00'.
+*employee-education2-hsc = '5.00'.
+*employee-education2-uni = '4.00'.
+*
+*insert employee into table it.
+*
+*
+*
+*LOOP AT it INTO employee.
+*  WRITE:/ employee-id, employee-education2-hsc.
+*  skip.
+*ENDLOOP.
+
+"--------------------------------------Deep structure practice-------------------------------
+
+*DATA: student                TYPE zstudent_struct,
+*      Internal_table_student TYPE TABLE OF zstudent_struct,
+*
+*      marks                  TYPE zstudents_marks,
+*      internal_table_marks   TYPE TABLE OF zstudents_marks.
+*
+*student-id = 1.
+*student-name = 'Sadbin M.'.
+*student-class = 12.
+*APPEND student TO internal_table_student.
+*
+*marks-mid1 = 89.
+*marks-mid2 = 99.
+*marks-final = 100.
+*APPEND marks TO internal_table_marks.
+*
+*
+*LOOP AT internal_table_student INTO student.
+*  WRITE:/ student-id, student-name(10), student-class.
+*  SKIP.
+*ENDLOOP.
+*
+*LOOP AT internal_table_marks INTO marks.
+*  WRITE:/ marks-mid1, marks-mid2, marks-final.
+*  SKIP.
+*ENDLOOP.
+
+*--------------------------------------Nested structure practice-------------------------------
+
+*DATA: student                TYPE zstudent_struct2,
+*      Internal_table_student TYPE TABLE OF zstudent_struct2.
+*
+*
+*
+*student-id = 1.
+*student-name = 'Sadbin M.'.
+*
+*
+*student-MARKS-mid1 = 89.
+*student-MARKS-mid2 = 99.
+*
+*APPEND student TO internal_table_student.
+*
+*LOOP AT internal_table_student INTO student.
+*  WRITE:/ student-id, student-name(10), student-MARKS-mid1, student-MARKS-mid2.
+*  SKIP.
+*ENDLOOP.
+
+
+*--------------------------------------Flat structure practice (Locally)-------------------------------
+
+*TYPES: BEGIN OF student,
+*         name(20)  TYPE c,
+*         id        TYPE i,
+*         Class(10) TYPE c,
+*       END OF student.
+*
+*DATA: work_area      TYPE student,
+*      internal_table TYPE TABLE OF student.
+*
+*work_area-name = 'Sakil Sarker'.
+*work_area-id = 4.
+*work_area-class = 'class-5'.
+*APPEND work_area TO internal_table.
+*CLEAR: work_area.
+*
+*work_area-name = 'Sajid Sarker'.
+*work_area-id = 11.
+*work_area-class = 'class-6'.
+*APPEND work_area TO internal_table.
+*
+*LOOP AT internal_table INTO work_area.
+*  WRITE:/ 'Student_ID: ', work_area-id,'Name: ', work_area-name,'Class_ID: ', work_area-class.
+*  SKIP.
+*ENDLOOP.
+
+*--------------------------------------Nested structure practice (Locally)-------------------------------
+
+*TYPES: BEGIN OF student,
+*         name(20)  TYPE c,
+*         id        TYPE i,
+*         Class(10) TYPE c,
+*       END OF student.
+*
+*
+*
+*DATA:
+*      BEGIN OF student2,
+*         student_info  TYPE student,
+*         age        TYPE i,
+*       END OF student2.
+*
+*
+*
+*
+*student2-student_info-name = 'Sakil Sarker'.
+*student2-student_info-id = 4.
+*student2-student_info-class = 'class-5'.
+*student2-age = 20.
+*
+* WRITE:/ student2-student_info-name.
+
+"-------------------------------External----------------------
+
+*
+*TABLES : mara .
+*
+*DATA : t_mara TYPE STANDARD TABLE OF mara,
+*       w_mara TYPE mara,
+*       w_makt TYPE makt,
+*       t_makt TYPE STANDARD TABLE OF makt.
+*
+*SELECTION-SCREEN BEGIN OF SCREEN 1001.
+*
+*  PARAMETERS : pq_matnr TYPE mara-matnr.
+*
+*SELECTION-SCREEN END OF SCREEN 1001.
+*
+*CALL SELECTION-SCREEN 1001 .
+*
+*SELECTION-SCREEN BEGIN OF BLOCK b1 WITH FRAME TITLE tit ."TITLE ."TEXT-001.
+*
+*  PARAMETERS : p_matnr TYPE mara-matnr." NO-DISPLAY ." DEFAULT '0001'.
+*  SELECT-OPTIONS : s_matnr FOR  mara-matnr ."NO-DISPLAY .". NO-EXTENSION  NO INTERVALS no ." DEFAULT '0001' .
+*  PARAMETERS : p_check AS CHECKBOX DEFAULT 'X'.
+*SELECTION-SCREEN END OF BLOCK b1.
+*
+*INITIALIZATION .
+*
+**  p_matnr = '1'.
+*  tit = 'Input'.
+
+*SELECTION-SCREEN BEGIN OF BLOCK b2.
+*
+*PARAMETERS : t_matnr TYPE mara-matnr ,
+*             p_ersda TYPE mara-ersda.
+*
+*SELECTION-SCREEN END OF BLOCK b2.
+
+*WRITE TEXT-001.
+
+*START-OF-SELECTION .
+*
+*
+*IF p_check EQ 'X' .
+*
+*SELECT * FROM mara INTO TABLE t_mara
+*  WHERE matnr IN s_matnr.
+*
+*SELECT * FROM makt INTO TABLE t_makt
+*  FOR ALL ENTRIES IN t_mara
+*  WHERE matnr = t_mara-matnr
+*  AND spras = 'EN'.
+*
+*ELSE .
+*
+*  SELECT * FROM mara INTO TABLE t_mara
+*  WHERE matnr IN s_matnr.
+*
+*
+*ENDIF .
+*
+*LOOP AT t_mara INTO w_mara .
+*
+*  READ TABLE t_makt INTO w_makt WITH  KEY matnr = w_mara-matnr.
+*
+*  WRITE :/ 'Materil No' , w_mara-matnr , 'Description : ' , w_makt-maktx .
+*
+*
+*  CLEAR : w_mara , w_makt .
+*
+*ENDLOOP .
+*
+*
+*END-OF-SELECTION .
+
+
+*TYPES: BEGIN OF student,
+*         name(20)  TYPE c,
+*         id        TYPE i,
+*         Class(10) TYPE c,
+*       END OF student.
+*
+*DATA:
+*     it  TYPE  student OCCURS 0 WITH HEADER LINE.
+*
+*it-name = 'Sakil Sarker'.
+*it-id = 4.
+*it-class = 'class-5'.
+*APPEND it.
+*
+*it-name = 'Sakil Sarker2'.
+*it-id = 42.
+*it-class = 'class-5'.
+*APPEND it.
+*
+*LOOP AT it.
+*  AT FIRST.
+*    WRITE:/ 'Hello'.
+*  ENDAT.
+*
+*  AT NEW id.
+*    WRITE:/ it-name.
+*  ENDAT.
+*
+*
+*  AT LAST.
+*    WRITE:/ 'BYE'.
+*  ENDAT.
+*
+*ENDLOOP.TABLES: zsd_header.
+
+*TYPES: BEGIN OF ty_join,
+*         so_num     TYPE zsd_header-so_num,
+*         customer_id     TYPE zsd_header-customer_id,
+*         product_id    TYPE ZSD_item-product_id,
+*         quantity       TYPE ZSD_item-quantity,
+*         unit_price TYPE ZSD_item-unit_price,
+*       END OF ty_join.
+*
+*
+*DATA:
+*  wa            TYPE ty_join,
+*  it            TYPE TABLE OF ty_join,
+*  wa_zsd_header TYPE zsd_header,
+*  it_zsd_header TYPE TABLE OF zsd_header,
+*  wa_zsd_item   TYPE ZSD_item,
+*  it_zsd_item   TYPE TABLE OF ZSD_item.
+
+
+
+
+
+
+*
+*SELECTION-SCREEN BEGIN OF BLOCK b1 WITH FRAME TITLE TEXT-001.
+*
+*  SELECT-OPTIONS: num FOR zsd_header-so_num.
+*  PARAMETERS: i_chk AS CHECKBOX DEFAULT 'X'.
+*  PARAMETERS: i_radio1 RADIOBUTTON GROUP rad DEFAULT 'X',
+*              i_radio2 RADIOBUTTON GROUP rad.
+*
+*SELECTION-SCREEN END OF BLOCK b1.
+*
+*START-OF-SELECTION.
+*
+**  SELECT a~so_num a~customer_id b~product_id b~quantity b~unit_price INTO TABLE it
+**    FROM zsd_header
+**    AS a INNER JOIN ZSD_item AS b
+**     ON a~so_num EQ b~so_num.
+***    where a~so_num in num.
+*
+*"-------------------Using for all entities------
+*SELECT * from ZSD_item INTO TABLE it_zsd_item.
+*SELECT so_num customer_id  from ZSD_HEADER INTO TABLE it FOR ALL ENTRIES IN it_zsd_item WHERE so_num eq it_zsd_item-so_num.
+*"product_id quantity unit_price"
+*  IF i_chk EQ 'X'.
+*    LOOP AT it INTO wa.
+*      AT FIRST.
+*        WRITE:/ 'No',10'ID',20'product',40'quantity',60'unit_price'.
+*
+*      ENDAT.
+*      AT NEW so_num.
+*        WRITE:/'Sales Order Number: ',wa-so_num.
+*        SKIP.
+*      ENDAT.
+*
+*      WRITE:/ wa-so_num , 10 wa-customer_id,20 wa-product_id,40 wa-quantity,60 wa-unit_price.
+*      AT END OF so_num.
+*        ULINE.
+*      ENDAT.
+*      AT LAST.
+*        WRITE:/'table gone'.
+*      ENDAT.
+*    ENDLOOP.
+*  ELSE.
+*    MESSAGE 'CHECK THE BOX' TYPE 'I'.
+*  ENDIF.
+*
+*End-of-SELECTION.
+
+*TYPES: BEGIN OF ty_employee,
+* Employee_id TYPE i,
+* Employee_name TYPE string,
+* Address_id TYPE string,
+* Department TYPE string,
+* END OF ty_employee.
+*
+* Data:
+*       wa TYPE ty_employee,
+*       it TYPE SORTED TABLE OF ty_employee WITH UNIQUE KEY employee_id.
+*
+* wa-Employee_id = 1.
+* wa-Employee_name = 'Shakil'.
+* wa-Address_id = 'Badda'.
+* wa-Department = 'SAP'.
+* APPEND wa to it.
+*
+* loop at it into wa.
+*   write:/ wa-Employee_id, wa-Employee_name,wa-Address_id,wa-Department.
+*   ENDLOOP.
+
+
+
+*TYPES: BEGIN OF ty_student,
+*         id           TYPE i,
+*         Student_name TYPE string,
+*         Department   TYPE string,
+*         status       TYPE string,
+*         Score        TYPE i,
+*       END OF ty_student.
+*
+*DATA: wa TYPE ty_student,
+*      It TYPE TABLE OF ty_student,
+*      temp TYPE i VALUE 0.
+*
+*wa-id = 1.
+*wa-Student_name = 'Shakil'.
+*wa-Department = 'SAP'.
+*wa-status = 'Highest'.
+*wa-Score = 80.
+*INSERT wa INTO TABLE it.
+*CLEAR: wa.
+*
+*wa-id = 3.
+*wa-Student_name = 'Shakil4'.
+*wa-Department = 'SAP'.
+*wa-status = 'unknown'.
+*wa-Score = 85.
+*INSERT wa INTO TABLE it.
+*CLEAR: wa.
+*
+*wa-id = 12.
+*wa-Student_name = 'Shakil2'.
+*wa-Department = 'SAP'.
+*wa-status = 'unknown'.
+*wa-Score = 10.
+*INSERT wa INTO TABLE it.
+*
+*
+*
+*
+**SELECT * FROM ty_student INTO TABLE it.
+*
+*SORT it BY score DESCENDING.
+*
+*LOOP AT it INTO wa.
+*  if wa-Score gt temp.
+*    temp = wa-Score.
+*    else.
+*      temp = temp.
+*      ENDIF.
+*      ENDLOOP.
+*
+*LOOP AT it INTO wa.
+*  if wa-Score eq temp.
+*    Wa-status = 'Highest'.
+*else.
+*  Wa-status = 'Unknown'.
+*  ENDIF.
+*  MODIFY it FROM wa.
+*ENDLOOP.
+*
+*
+*
+*
+*
+*
+*LOOP AT it INTO wa.
+*  WRITE:/ wa-id, wa-Score,wa-status.
+*ENDLOOP.
+"------------------------------------------Subroutine
+*
+*Data: A TYPE i.
+*a = 10.
+*
+*WRITE:/ 'Value of A before calling any subroutine: ', a.
+*PERFORM pass_by_ref using a.
+*WRITE:/ 'Value of A after calling any subroutine: ', a.
+*
+*
+*form pass_by_ref USING f_a.
+*  f_a = f_a + 10. "Making changes to the formal parameter and the actual parameter is also getting affected.
+*  ENDFORM.
+*
+*
+*WRITE:/ 'Value of A before calling any subroutine: ', a.
+*PERFORM pass_by_val using a.
+*WRITE:/ 'Value of A after calling any subroutine: ', a.
+*
+*
+*form pass_by_val USING VALUE(f_a).
+*  f_a = f_a + 10. "Making changes to the formal parameter and the actual parameter is not getting affected.
+*  ENDFORM.
+*
+*WRITE:/ 'Value of A before calling any subroutine: ', a.
+*PERFORM pass_by_changing using a.
+*WRITE:/ 'Value of A after calling any subroutine: ', a.
+*
+*
+*form pass_by_changing CHANGING VALUE(f_a).
+*  f_a = f_a + 10. "Making changes to the formal parameter and the actual parameter is also getting affected.
+*  ENDFORM.
